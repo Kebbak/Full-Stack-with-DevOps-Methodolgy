@@ -108,11 +108,15 @@ const LandingPage = () => {
   ];
 
   return (
-          <div className="landing-page">
-            {/* HERO SECTION */}
-            <div className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
-              <div className="overlay"></div>
-              <div className="hero-header-wrapper">
+         <div className="landing-page">
+  {/* HERO SECTION */}
+  <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
+    <div className="hero-border-left"></div>
+    <div className="hero-border-right"></div>
+    <div className="overlay"></div>
+
+    <div className="container">
+      <div className="hero-header-wrapper">
         <div className="hero-header">
           <img src={logo} alt="Netflix Logo" className="logo" />
           <div className="header-right">
@@ -120,19 +124,22 @@ const LandingPage = () => {
               <option value="en">English</option>
               <option value="fr">Français</option>
             </select>
-            <button className="sign-in" onClick={() => navigate('/login')}>Sign In</button>
-          </div>
-        </div>
-      </div>
-        <div className="hero-content">
-          <div className="hero-highlight">
-            <h1>Unlimited movies, TV shows, and more</h1>
-            <p>Start at $3.99. Cancel anytime.</p>
-            {renderEmailForm()}
+            <button className="sign-in" onClick={() => navigate('/login')}>
+              Sign In
+            </button>
           </div>
         </div>
       </div>
 
+      <div className="hero-content">
+        <div className="hero-highlight">
+          <h1>Unlimited movies, TV shows, and more</h1>
+          <p>Start at $3.99. Cancel anytime.</p>
+          {renderEmailForm()}
+        </div>
+      </div>
+    </div>
+  </section>
       {/* TRENDING NOW */}
       <section className="trending-now">
         <div className="container">

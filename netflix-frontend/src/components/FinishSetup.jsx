@@ -1,15 +1,43 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import './FinishSetup.css';
+import { useState } from 'react';
 
 function FinishSetup() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const queryParams = new URLSearchParams(location.search);
   const email = queryParams.get('email') || 'your@email.com';
 
-  const handleSendLink = () => {
-    alert(`Sign-up link sent to ${email}`);
-    navigate('/profiles');
+  const handleSendLink = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/send-signup-link`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(`Sign-up link sent to ${email}`);
+        navigate('/profiles');
+      } else {
+        setError(data?.error || 'Failed to send sign-up link.');
+      }
+    } catch (err) {
+      console.error('Send link error:', err);
+      setError('An unexpected error occurred.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -34,7 +62,11 @@ function FinishSetup() {
           Please do not email me Netflix special offers.
         </label>
 
-        <button className="send-link-btn" onClick={handleSendLink}>Send Link</button>
+        <button className="send-link-btn" onClick={handleSendLink} disabled={loading}>
+          {loading ? 'Sending...' : 'Send Link'}
+        </button>
+
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </main>
 
       <footer className="setup-footer">

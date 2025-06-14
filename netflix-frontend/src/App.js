@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import './index.css';
 import EditProfile from './pages/EditProfile';
 import ChangeEmail from './pages/ChangeEmail';
 import LanguagePreferences from './pages/LanguagePreferences';
@@ -47,6 +47,7 @@ import HelpCenter from './pages/HelpCenter';
 import TransferProfile from './pages/TransferProfile';
 import PersonalInfo from './pages/PersonalInfo';
 import DeleteAccount from './pages/DeleteAccount';
+import FinishSetup from './components/FinishSetup';
 import AddPhone from './pages/AddPhone';
 import SignInCode from './pages/SignInCode';
 import ChangePassword from './pages/ChangePassword';
@@ -83,21 +84,22 @@ function AppWrapper() {
     <>
       {shouldShowNavbar && <Navbar />}
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signin-code" element={<SignInCode />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={isAuthenticated ? <Home /> : <Landing />} />
-        <Route path="/movie/:id" element={isAuthenticated ? <MovieDetails /> : <Navigate to="/login" />} />
-        <Route path="/subscribe" element={isAuthenticated ? <Subscribe /> : <Navigate to="/login" />} />
-        <Route path="/profiles" element={isAuthenticated ? <Profiles /> : <Navigate to="/login" />} />
-        <Route path="/tv-shows" element={isAuthenticated ? <TVShows /> : <Navigate to="/login" />} />
-        <Route path="/change-email" element={isAuthenticated ? <ChangeEmail /> : <Navigate to="/login" />} />
-        <Route path="/request-code" element={<RequestCode />} />
-        <Route path="/edit-profile" element={isAuthenticated ? <EditProfile /> : <Navigate to="/login" />} />
-        <Route path="/my-list" element={isAuthenticated ? <MyList /> : <Navigate to="/login" />} />
-        <Route path="/movies" element={isAuthenticated ? <MoviesPage /> : <Navigate to="/login" />} />
-        <Route path="/new-popular" element={isAuthenticated ? <NewPopularPage /> : <Navigate to="/login" />} />
-        <Route path="/languages" element={isAuthenticated ? <LanguagesPage /> : <Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signin-code" element={<SignInCode />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/finish-setup" element={<FinishSetup />} />
+          <Route path="/" element={isAuthenticated ? <Home /> : <Landing />} />
+          <Route path="/movie/:id" element={isAuthenticated ? <MovieDetails /> : <Navigate to="/login" />} />
+          <Route path="/subscribe" element={isAuthenticated ? <Subscribe /> : <Navigate to="/login" />} />
+          <Route path="/profiles" element={isAuthenticated ? <Profiles /> : <Navigate to="/login" />} />
+          <Route path="/tv-shows" element={isAuthenticated ? <TVShows /> : <Navigate to="/login" />} />
+          <Route path="/change-email" element={isAuthenticated ? <ChangeEmail /> : <Navigate to="/login" />} />
+          <Route path="/request-code" element={<RequestCode />} />
+          <Route path="/edit-profile" element={isAuthenticated ? <EditProfile /> : <Navigate to="/login" />} />
+          <Route path="/my-list" element={isAuthenticated ? <MyList /> : <Navigate to="/login" />} />
+          <Route path="/movies" element={isAuthenticated ? <MoviesPage /> : <Navigate to="/login" />} />
+          <Route path="/new-popular" element={isAuthenticated ? <NewPopularPage /> : <Navigate to="/login" />} />
+          <Route path="/languages" element={isAuthenticated ? <LanguagesPage /> : <Navigate to="/login" />} />
         <Route element={<AccountLayout />}>
           <Route path="/change-plan" element={isAuthenticated ? <ChangePlan /> : <Navigate to="/login" />} />
           <Route path="/manage-payment" element={isAuthenticated ? <ManagePayment /> : <Navigate to="/login" />} />

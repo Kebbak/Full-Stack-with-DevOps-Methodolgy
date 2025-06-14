@@ -6,8 +6,8 @@ export default function Profiles() {
   const navigate = useNavigate();
 
   const [profiles, setProfiles] = useState([
-    { name: 'Kebba_k', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png', isKids: false },
-    { name: 'Sukar & Adama', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png', isKids: false },
+    { name: 'User1', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png', isKids: false },
+    { name: 'User2', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png', isKids: false },
     { name: 'Dzieci', image: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png', isKids: true },
   ]);
 

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from "react";
 import heroImage from "../assets/hero-bg.jpg";
 import logo from "../assets/netflix-logo.svg";
@@ -7,7 +8,18 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 const LandingPage = () => {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [emailInput, setEmailInput] = useState('');
   const carouselRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    if (emailInput.trim()) {
+      // Example: Navigate to signup with email param
+      navigate(`/finish-setup?email=${encodeURIComponent(emailInput)}`);
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
 
   useEffect(() => {
     fetchTrendingMovies();
@@ -55,8 +67,14 @@ const LandingPage = () => {
     <>
       <p>Ready to watch? Enter your email to create or restart your membership.</p>
       <div className="email-form" role="form" aria-label="Email signup form">
-        <input type="email" placeholder="Email address" aria-label="Email address" />
-        <button>Get Started</button>
+        <input
+          type="email"
+          placeholder="Email address"
+          aria-label="Email address"
+          value={emailInput}
+          onChange={(e) => setEmailInput(e.target.value)}
+        />
+        <button onClick={handleGetStarted}>Get Started</button>
       </div>
     </>
   );
@@ -64,50 +82,64 @@ const LandingPage = () => {
   const faqs = [
     {
       question: "What is Netflix?",
-      answer: "Netflix is a streaming service offering a wide variety of award-winning TV shows, movies, anime, documentaries, and more.",
+      answer:
+        "Netflix is a streaming service offering a wide variety of award-winning TV shows, movies, anime, documentaries, and more.",
     },
     {
       question: "How much does Netflix cost?",
-      answer: "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device for a fixed monthly fee. Plans range from $3.99 to $15.99 a month.",
+      answer:
+        "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device for a fixed monthly fee. Plans range from $3.99 to $15.99 a month.",
     },
     {
       question: "Where can I watch?",
-      answer: "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web or on devices with the Netflix app.",
+      answer:
+        "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web or on devices with the Netflix app.",
     },
     {
       question: "How do I cancel?",
-      answer: "Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks.",
+      answer:
+        "Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks.",
     },
     {
       question: "What can I watch on Netflix?",
-      answer: "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more.",
+      answer:
+        "Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more.",
     },
   ];
 
   return (
-    <div className="landing-page">
-      {/* HERO SECTION */}
-      <div className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
-        <div className="overlay"></div>
-        <header>
+         <div className="landing-page">
+  {/* HERO SECTION */}
+  <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
+    <div className="hero-border-left"></div>
+    <div className="hero-border-right"></div>
+    <div className="overlay"></div>
+
+    <div className="container">
+      <div className="hero-header-wrapper">
+        <div className="hero-header">
           <img src={logo} alt="Netflix Logo" className="logo" />
           <div className="header-right">
             <select className="language-select" aria-label="Select language">
               <option value="en">English</option>
               <option value="fr">Français</option>
             </select>
-            <button className="sign-in">Sign In</button>
-          </div>
-        </header>
-        <div className="hero-content">
-          <div className="hero-highlight">
-            <h1>Unlimited movies, TV shows, and more</h1>
-            <p>Start at $3.99. Cancel anytime.</p>
-            {renderEmailForm()}
+            <button className="sign-in" onClick={() => navigate('/login')}>
+              Sign In
+            </button>
           </div>
         </div>
       </div>
 
+      <div className="hero-content">
+        <div className="hero-highlight">
+          <h1>Unlimited movies, TV shows, and more</h1>
+          <p>Start at $3.99. Cancel anytime.</p>
+          {renderEmailForm()}
+        </div>
+      </div>
+    </div>
+  </section>
       {/* TRENDING NOW */}
       <section className="trending-now">
         <div className="container">
@@ -189,46 +221,46 @@ const LandingPage = () => {
 
       {/* FOOTER */}
       <footer className="section footer">
-  <div className="container">
-    <div className="footer-columns">
-      <div className="footer-column">
-        <a href="/">FAQ</a>
-        <a href="/">Investor Relations</a>
-        <a href="/">Ways to Watch</a>
-        <a href="/">Corporate Information</a>
-        <a href="/">Legal Notices</a>
-      </div>
-      <div className="footer-column">
-        <a href="/">Help Center</a>
-        <a href="/">Jobs</a>
-        <a href="/">Terms of Use</a>
-        <a href="/">Contact Us</a>
-      </div>
-      <div className="footer-column">
-        <a href="/">Privacy</a>
-        <a href="/">Speed Test</a>
-        <a href="/">Account</a>
-        <a href="/">Redeem Gift Cards</a>
-      </div>
-      <div className="footer-column">
-        <a href="/">Media Center</a>
-        <a href="/">Buy Gift Cards</a>
-        <a href="/">Cookie Preferences</a>
-        <a href="/">Legal Guarantee</a>
-      </div>
+        <div className="container">
+          <div className="footer-columns">
+            <div className="footer-column">
+              <a href="/">FAQ</a>
+              <a href="/">Investor Relations</a>
+              <a href="/">Ways to Watch</a>
+              <a href="/">Corporate Information</a>
+              <a href="/">Legal Notices</a>
+            </div>
+            <div className="footer-column">
+              <a href="/">Help Center</a>
+              <a href="/">Jobs</a>
+              <a href="/">Terms of Use</a>
+              <a href="/">Contact Us</a>
+            </div>
+            <div className="footer-column">
+              <a href="/">Privacy</a>
+              <a href="/">Speed Test</a>
+              <a href="/">Account</a>
+              <a href="/">Redeem Gift Cards</a>
+            </div>
+            <div className="footer-column">
+              <a href="/">Media Center</a>
+              <a href="/">Buy Gift Cards</a>
+              <a href="/">Cookie Preferences</a>
+              <a href="/">Legal Guarantee</a>
+            </div>
+          </div>
+          <div className="footer-lang">
+            <select aria-label="Select language">
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+            </select>
+            <div className="recaptcha-note">
+              This page is protected by Google reCAPTCHA to ensure you're not a bot.
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-    <div className="footer-lang">
-      <select aria-label="Select language">
-        <option value="en">English</option>
-        <option value="fr">Français</option>
-      </select>
-      <div className="recaptcha-note">
-        This page is protected by Google reCAPTCHA to ensure you're not a bot.
-      </div>
-    </div>
-  </div>
-</footer>
-</div>
   );
 };
 

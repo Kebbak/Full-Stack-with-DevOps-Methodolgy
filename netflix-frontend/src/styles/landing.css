@@ -1,11 +1,13 @@
 
-/* General styles */
+/* Base Styles */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   background-color: #000;
   color: #fff;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 .container {
@@ -14,130 +16,245 @@ body, html {
   padding: 0 20px;
 }
 
-/* HERO SECTION */
-.hero {
+/* Apply to the main container wrapping your entire UI */
+#app-container {
+  transform: scale(0.95);
+  transform-origin: top left; 
+  width: 105.26%;
+  height: 105.26%;
+  overflow: hidden;
+}
+/* Header (used elsewhere) */
+header {
   position: relative;
-  height: 90vh;
-  background-size: cover;
-  background-position: center;
-  color: #fff;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: transparent;
 }
 
-.overlay {
+/* Hero Header Wrapper (NEW) */
+.hero-header-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: 1;
+  padding: 20px 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
 }
 
-header {
-  position: relative;
-  z-index: 2;
+/* Hero Header Container (NEW) */
+.hero-header {
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   align-items: center;
 }
 
+/* Logo */
 .logo {
   width: 120px;
+  cursor: pointer;
 }
 
+
+/* Header Right */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .language-select {
   background: transparent;
   color: white;
   border: 1px solid white;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 3px;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .sign-in {
   background-color: #e50914;
   border: none;
-  padding: 7px 15px;
+  padding: 8px 16px;
   border-radius: 3px;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
+.sign-in:hover {
+  background-color: #b00610;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('../assets/hero-bg.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Overlay on Hero Background */
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 5;
+}
+
+/* Hero Content */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px;
   text-align: center;
-  top: 25%;
+}
+
+.hero-highlight {
+  width: 100%;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
-.hero-highlight h1 {
-  font-size: 3rem;
+
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
-.hero-highlight p {
+.hero-content p {
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
+/* Full Red Rectangle Around Hero Section */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background-color: #e50914;
+  z-index: 10;
+  border-radius: 1px;
+}
+
+.hero::before {
+  top: 0;
+}
+
+.hero::after {
+  bottom: 0;
+}
+
+.hero-border-left,
+.hero-border-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #e50914;
+  z-index: 10;
+  border-radius: 1px;
+}
+
+.hero-border-left {
+  left: 0;
+}
+
+.hero-border-right {
+  right: 0;
+}
+
+
+/* Email Form */
 .email-form {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
-  max-width: 600px;
-  margin: auto;
+  flex-wrap: nowrap;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .email-form input {
-  padding: 10px;
+  padding: 16px;
   font-size: 1rem;
   flex: 1 1 300px;
   border: none;
   border-radius: 4px;
+  color: white;
+  background-color: #000;
+  border: 1px solid #555;
+  transition: border-color 0.3s ease;
+}
+
+.email-form input:focus {
+  outline: none;
+  border-color: #e50914;
 }
 
 .email-form button {
   background-color: #e50914;
   color: white;
-  padding: 10px 20px;
+  padding: 16px 20px;
   border: none;
   font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.email-form button:hover {
+  background-color: #b00610;
 }
 
 /* Section Title */
 .section-title {
-  font-size: 4.2rem; /* Increased for emphasis */
-  font-family: Arial, sans-serif;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 30px;
 }
 
-
-/* Unified Section Layout */
+/* Section General */
 .section {
   background-color: #111;
   padding: 60px 20px;
-  color: #fff;
 }
 
-/* TRENDING NOW */
+/* Trending Now Section */
 .trending-now {
   background-color: #000;
   padding: 50px 20px;
-  color: #fff;
 }
 
 .trending-carousel-wrapper {
@@ -165,43 +282,33 @@ header {
   background-color: #111;
   border-radius: 8px;
   overflow: hidden;
-  position: relative;
   transition: transform 0.3s ease;
+  position: relative;
+  cursor: pointer;
 }
 
 .trending-card:hover {
   transform: scale(1.1);
-  z-index: 2;
+  z-index: 20;
 }
 
 .trending-card img {
   width: 100%;
-  height: auto;
   display: block;
+  border-radius: 8px;
 }
 
 .netflix-badge {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: red;
+  background-color: #e50914;
   color: white;
   font-weight: bold;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.75rem;
-}
-
-.rank-number {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 3px 7px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 0.8rem;
-  color: #fff;
+  z-index: 30;
 }
 
 .trending-arrow {
@@ -214,23 +321,19 @@ header {
   border: none;
   padding: 10px 15px;
   cursor: pointer;
-  z-index: 3;
-  transition: background-color 0.3s ease;
+  z-index: 30;
+  user-select: none;
 }
+
 
 .trending-arrow:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.trending-arrow.left {
-  left: 0;
-}
+.trending-arrow.left { left: 0; }
+.trending-arrow.right { right: 0; }
 
-.trending-arrow.right {
-  right: 0;
-}
-
-/* REASONS TO JOIN */
+/* Reasons Section */
 .reasons-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -242,23 +345,44 @@ header {
   padding: 30px;
   border-radius: 10px;
   text-align: center;
-}
-
-.reason-card .icon {
-  font-size: 2rem;
-  margin-bottom: 15px;
+  color: #fff;
 }
 
 .reason-card h3 {
   margin-bottom: 10px;
 }
 
-/* FAQ SECTION */
+/* FAQ Section */
 .faq-item {
   border-bottom: 1px solid #333;
   padding: 20px 0;
 }
 
+.faq-question {
+  background: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  color: #ddd;
+}
+
+/* FAQ Section */
+.faq-item {
+  border-bottom: 1px solid #333;
+  padding: 20px 0;
+}
 
 .faq-question {
   background: none;
@@ -283,18 +407,52 @@ header {
   max-height: 200px;
 }
 
-.get-started-bottom {
-  margin-top: 30px;
-  text-align: center;
-}
-
-/* FOOTER */
-
+/* Footer */
 .section.footer {
   background-color: #111;
   padding: 60px 20px;
   color: #888;
 }
+.get-started-bottom .email-form {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+.get-started-bottom .email-form input[type="email"] {
+  flex: 1;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 2px 0 0 2px;
+}
+
+.get-started-bottom .email-form button {
+  padding: 15px 25px;
+  font-size: 1rem;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .get-started-bottom .email-form {
+    flex-direction: column;
+  }
+
+  .get-started-bottom .email-form input[type="email"],
+  .get-started-bottom .email-form button {
+    border-radius: 2px;
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
 
 .footer .container {
   max-width: 1200px;
@@ -308,7 +466,6 @@ header {
   gap: 20px;
   margin-bottom: 20px;
 }
-
 
 .footer-column a {
   display: block;
@@ -341,7 +498,7 @@ header {
   color: #666;
 }
 
-/* Responsive Layout */
+/* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .trending-card {
     flex: 0 0 calc((100% - 60px) / 4);
@@ -353,11 +510,11 @@ header {
     flex: 0 0 calc((100% - 40px) / 3);
   }
 
-  .hero-highlight h1 {
+  .hero-content h1 {
     font-size: 2.2rem;
   }
 
-  .hero-highlight p {
+  .hero-content p {
     font-size: 1.2rem;
   }
 }
@@ -367,11 +524,11 @@ header {
     flex: 0 0 calc((100% - 20px) / 2);
   }
 
-  .hero-highlight h1 {
+  .hero-content h1 {
     font-size: 1.6rem;
   }
 
-  .hero-highlight p {
+  .hero-content p {
     font-size: 1rem;
   }
 
@@ -384,4 +541,362 @@ header {
   .email-form button {
     width: 100%;
   }
+}
+
+/* Full Red Rectangle Around Hero Section */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px; /* thinner line */
+  background-color: #e50914;
+  z-index: 2;
+  border-radius: 1px;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px; /* thinner line */
+  background-color: #e50914;
+  z-index: 2;
+  border-radius: 1px;
+}
+
+
+.hero-border-left {
+  left: 0;
+}
+
+.hero-border-right {
+  right: 0;
+}
+
+
+/* Centering the "Get Started" section below FAQ */
+.get-started-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.get-started-bottom .email-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.email-form input {
+  padding: 16px;
+  font-size: 1rem;
+  flex: 1 1 300px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: #000; /* changed from white to black */
+  border: 1px solid #555;
+}
+
+.email-form button {
+  background-color: #e50914;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Enhancements for Trending Now section to match Netflix style */
+
+/* Card Aspect Ratio */
+.trending-card {
+  aspect-ratio: 2 / 3;
+  height: 300px;
+  width: auto;
+}
+
+.trending-card {
+  position: relative;
+  padding-left: 60px; /* Make room for the number */
+  overflow: visible;  /* Ensure number isn't clipped */
+}
+
+.rank-number {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  z-index: 50;
+  pointer-events: none; /* Prevent interference with hover */
+}
+
+
+/* Carousel Arrows */
+.trending-arrow {
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 2.5rem;
+  border-radius: 50%;
+}
+
+/* Card Overlay on Hover */
+.trending-card:hover::after {
+  content: "▶ Preview";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.6);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Smooth Scroll Snapping */
+.trending-carousel {
+  scroll-snap-type: x mandatory;
+}
+
+.trending-card {
+  scroll-snap-align: start;
+}
+
+.reasons-section {
+  background-color: #000;
+  padding: 60px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.reason-card {
+  position: relative;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.reason-card:hover {
+  transform: translateY(-5px);
+}
+
+.reason-card .icon {
+  position: static;
+  margin-bottom: 15px;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ff4ec7, #a64bf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+
+/* Optional: Add unique background colors */
+.reason-card.tv { background-color: #2a2a72; }
+.reason-card.download { background-color: #1e3c72; }
+.reason-card.everywhere { background-color: #3a3a3a; }
+.reason-card.kids { background-color: #4a148c; }
+
+
+/* Updated CSS for full red rectangle around the hero section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('../assets/hero-bg.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Top and Bottom Borders */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #e50914;
+  z-index: 10;
+}
+
+.hero::before {
+  top: 0;
+}
+
+.hero::after {
+  bottom: 0;
+}
+
+/* Left and Right Borders */
+.hero-border-left,
+.hero-border-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #e50914;
+  z-index: 10;
+}
+
+.hero-border-left {
+  left: 0;
+}
+
+.hero-border-right {
+  right: 0;
+}
+
+/* Updated CSS for Trending Now title */
+.trending-now .section-title {
+  position: relative;
+  display: inline-block;
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.trending-now .section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 4px;
+  background-color: #e50914;
+  border-radius: 2px;
+}
+
+/* Updated CSS for centered icons in the reasons section */
+.reason-card .icon {
+  position: static;
+  margin-bottom: 15px;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ff4ec7, #a64bf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('../assets/hero-bg.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Top and Bottom Borders */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #e50914;
+  z-index: 10;
+}
+
+.hero::before {
+  top: 0;
+}
+
+.hero::after {
+  bottom: 0;
+}
+
+/* Left and Right Borders */
+.hero-border-left,
+.hero-border-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #e50914;
+  z-index: 10;
+}
+
+.hero-border-left {
+  left: 0;
+}
+
+.hero-border-right {
+  right: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-highlight {
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.trending-now .section-title {
+  position: relative;
+  display: inline-block;
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.trending-now .section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 4px;
+  background-color: #e50914;
+  border-radius: 2px;
+}
+
+.reason-card .icon {
+  position: static;
+  margin-bottom: 15px;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ff4ec7, #a64bf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }

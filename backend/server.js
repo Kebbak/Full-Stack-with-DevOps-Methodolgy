@@ -4,9 +4,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 require('dotenv').config();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // <-- Add this line
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const authRoutes = require('./routes/auth');
 const movieRoutes = require('./routes/movie');
+const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
 const app = express();
 
 app.use(express.json());
@@ -83,6 +85,46 @@ app.post('/api/create-checkout-session', async (req, res) => {
   } catch (error) {
     console.error('Stripe session error:', error);
     res.status(500).json({ error: 'Failed to create checkout session' });
+  }
+});
+app.post('/api/send-signup-link', async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) return res.status(400).json({ error: 'Email is required' });
+
+  try {
+    // Generate a token valid for 15 minutes
+    const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '15m' });
+
+    const signupLink = `http://localhost:3000/signup?token=${token}`; // Adjust link to frontend route
+
+    // Configure transporter (for Gmail or SMTP provider)
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,      // your gmail or email address
+        pass: process.env.EMAIL_PASS       // your app password or SMTP password
+      }
+    });
+
+    const mailOptions = {
+      from: `"Netflix Clone" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: 'Complete your sign-up',
+      html: `
+        <p>Hi,</p>
+        <p>Click the link below to finish signing up and create your password-free account:</p>
+        <a href="${signupLink}">${signupLink}</a>
+        <p>This link will expire in 15 minutes.</p>
+      `
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ message: 'Signup link sent successfully' });
+  } catch (error) {
+    console.error('Error sending signup link:', error);
+    res.status(500).json({ error: 'Failed to send signup link' });
   }
 });
 

@@ -1,15 +1,14 @@
 # Netflix
-KEY BACKEND FEATURES
+***KEY BACKEND FEATURES***
 User Registration & Login with JWT
 Role-based access (User/Admin)
-Movie/Series management (add, update, delete, list)
 Genre-based filtering 
 watchlist support
-Video streaming (basic support for now)
+Video streaming
 MongoDB as the database
 
 
-KEY FRONTEND FEATURES
+***KEY FRONTEND FEATURES***
 
 User Registration & Login (with JWT)
 Protect Routes (HomePage, Movies)
@@ -18,18 +17,18 @@ Movie Details Page with Video player
 Watchlist
 Admin Add Movie Page 
 
-DevOps & Deployment
+***DEVOPS & DEPLOYMENT***
 Dockerized backend & frontend
 CI/CD pipelines(Github, Argocd)
-Deploye to cloud (AWS)
-Logging and momitoring(Prometheus Grafana, Loki)
+Deploy to cloud (AWS Cloud)
+Logging and momitoring(Prometheus-stacks , Grafana)
 
-Tech Stack:
+***Tech Stack***:
 Frontend               React + Tailwind CSS/Material UI
 Backend                Nodejs + Express
-Auth                   JWT + bcrypt / Passport.js
+Auth                   JWT Authentication
 Database               MongoDB 
-Video Storage          AWS S3 
+Video Storage          TMDB ( MOVIE DATABASE)
 Streaming              HLS (.m3u8) with Video.js
-Payments               Stripe / Paypal
+Payments               Stripe / Paypal ---> Mock
 Hosting                AWS EKS

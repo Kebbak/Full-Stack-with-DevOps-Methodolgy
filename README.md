@@ -1,3 +1,9 @@
+
+A fully Functional Netflix-Inspired Netflix Replica video streaming platform built using MERN Stack(MongoDB, Express, React,Nodejs)
+with complete DevOps automation using Docker, Github Acyions, ArgoCD and AWS EKS.
+
+
+
 📦 __How to Run Locally (Dev Mode)__
 
 git clone https://github.com/Kebba91/Netflix

@@ -6,7 +6,7 @@ with complete DevOps automation using Docker, Github Acyions, ArgoCD and AWS EKS
 
 📦 __How to Run Locally (Dev Mode)__
 
-git clone https://github.com/Kebba91/Netflix
+git clone https://github.com/Kebba91/Netflix-Replica-Full-Stack-Web-App-with-DevOps
 
 __Start Backend__
 

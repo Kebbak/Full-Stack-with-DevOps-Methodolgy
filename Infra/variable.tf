@@ -39,7 +39,20 @@ variable "availability_zones" {
   type        = list(string)
 }
 
-variable "vpc_cidr_block" {
-  description = "List of cidr blocks for subnets"
-  type        = list(string)
+variable "cidr_block_a" {
+  description = "CIDR block for the first subnet"
+  type        = string
+}
+variable "cidr_block_b" {
+  description = "CIDR block for the second subnet"
+  type        = string
+}
+
+variable "subnet_id_a" {
+  description = "Subnet ID for the first subnet"
+  type        = string
+}
+variable "subnet_id_b" {
+  description = "Subnet ID for the second subnet"
+  type        = string
 }

@@ -12,3 +12,12 @@ variable "ssh_key_name" {
     description = "SSH key name for accessing the EKS nodes"
     type        = string
 }
+
+variable "subnet_id_a" {
+  description = "Subnet ID for the first subnet"
+  type        = string
+}
+variable "subnet_id_b" {
+  description = "Subnet ID for the second subnet"
+  type        = string
+}

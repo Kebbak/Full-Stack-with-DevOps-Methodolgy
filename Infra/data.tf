@@ -17,3 +17,7 @@ data "aws_security_group" "default" {
     values = ["default"]
   }
 }
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks_cluster.cluster_name
+}

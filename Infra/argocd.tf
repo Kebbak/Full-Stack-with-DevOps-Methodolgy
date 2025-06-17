@@ -1,13 +1,7 @@
-resource "helm_release" "argocd" {
-  name       = "argocd"
-  repository = "https://argoproj.github.io/argo-helm"
-  chart      = "argo-cd"
-  version    = "5.51.6"
-  namespace = "argocd"
-  create_namespace = true
+module "argocd" {
+  source = "./modules/argocd"
 
-set {
-  name  = "server.service.type"
-  value = "LoadBalancer"
-}
+  eks_cluster_endpoint = module.eks_cluster.cluster_endpoint
+  eks_cluster_ca       = module.eks_cluster.cluster_certificate_authority_data
+  eks_token            = data.aws_eks_cluster_auth.cluster.token
 }

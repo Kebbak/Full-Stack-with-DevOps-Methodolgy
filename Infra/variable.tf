@@ -1,50 +1,38 @@
-variable "cidr_block" {
-    description = "CIDR block for the VPC"
-    type        = string
-    
-}
-
-variable "name" {
-    description = "Name of the EKS cluster"
-    type        = string
-}
-
 variable "node_group_name" {
-    description = "Name of the EKS node group"
-    type        = string
+  type    = string
+  default = "default-eks-nodes name"
 }
 
-
-variable "ssh_key_name" {
-    description = "SSH key name for accessing the EKS nodes"
-    type        = string
-}
-
-
-variable "ssh_key_name" {
-  description = "The name of the SSH key pair to use for the EC2 instance."
+variable "cluster_version" {
+  description = "eks require version"
   type        = string
 }
 
-variable "availability_zones" {
-  description = "List of availability zones for the EKS cluster"
+variable "subnet_ids" {
+  description = "Subnet ID for the instance"
   type        = list(string)
 }
 
-variable "cidr_block_a" {
-  description = "CIDR block for the first subnet"
-  type        = string
-}
-variable "cidr_block_b" {
-  description = "CIDR block for the second subnet"
+variable "vpc_security_group_ids" {
+  description = "VPC Security Group ID for the instance"
   type        = string
 }
 
-variable "subnet_id_a" {
-  description = "Subnet ID for the first subnet"
+variable "cluster_name" {
+  type        = string
+  description = "description"
+}
+
+variable "instance_type" {
+  description = "The instance type for the EKS nodes"
   type        = string
 }
-variable "subnet_id_b" {
-  description = "Subnet ID for the second subnet"
-  type        = string
+
+
+variable "access_key" {
+description = "AWS Access Key"
+}
+
+variable "secret_key" {
+description = "AWS Secret Key"
 }

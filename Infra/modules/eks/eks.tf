@@ -1,42 +1,53 @@
-resource "aws_eks_cluster" "main" {
-  name     = var.name
-  role_arn = aws_iam_role.eks_cluster_role.arn
+# Create terraform eks cluster
+resource "aws_eks_cluster" "aws_eks_cluster" {
+  name               = var.cluster_name
+  version            = var.cluster_version
+  role_arn           = aws_iam_role.eks-role.arn
 
   vpc_config {
-    subnet_ids = [
-      aws_subnet.public_a.id,
-      aws_subnet.public_b.id
-    ]
-    endpoint_public_access = true
+    subnet_ids = var.subnet_ids
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.eks_cluster_AmazonEKSClusterPolicy
+    aws_iam_role_policy_attachment.eks_cluster_policy,
+    aws_iam_role_policy_attachment.eks_vpc_resource_controller,
+  ]
+
+  tags = {
+    Name = "${local.Environment}-eks-cluster"
+  }
+}
+
+# Add addons
+resource "aws_eks_addon" "eks-add" {
+  cluster_name = aws_eks_cluster.aws_eks_cluster.name
+  addon_name   = "vpc-cni"
+
+  depends_on = [
+    aws_eks_cluster.aws_eks_cluster
   ]
 }
 
-resource "aws_eks_node_group" "ng" {
-  cluster_name    = aws_eks_cluster.main.var.name
+# EKS nodes
+resource "aws_eks_node_group" "my_eks_node" {
+  cluster_name            = aws_eks_cluster.aws_eks_cluster.name
   node_group_name = var.node_group_name
-  subnet_ids      = [
-    aws_subnet.public_a.id,
-    aws_subnet.public_b.id
-  ]
   node_role_arn   = aws_iam_role.eks_node_role.arn
+  subnet_ids      = var.subnet_ids
+
   scaling_config {
     desired_size = 2
-    max_size     = 3
+    max_size     = 2
     min_size     = 1
   }
-  remote_access {
-    ssh_key_name = var.ssh_key_name
-    source_security_group_ids = [aws_security_group.eks_nodes.id]
-  }
-  #security_groups = [aws_security_group.eks_nodes.id] # Uncomment if needed
+
+  instance_types = [var.instance_type]
 
   depends_on = [
-    aws_iam_role_policy_attachment.eks_node_AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.eks_node_AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.eks_node_AmazonEC2ContainerRegistryReadOnly
+    aws_eks_cluster.aws_eks_cluster,
   ]
+
+  tags = {
+    Name = "eks-node"
+  }
 }

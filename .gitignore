@@ -1,4 +1,6 @@
 terraform.tfvars
+backend.tf
+data.tf
 *.tfstate
 *.tfstate.*
 crash.log

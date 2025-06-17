@@ -1,23 +1,30 @@
-variable "name" {
-    description = "Name of the EKS cluster"
-    type        = string
-}
-
 variable "node_group_name" {
-    description = "Name of the EKS node group"
-    type        = string
+  type    = string
+  default = "default-eks-nodes name"
 }
 
-variable "ssh_key_name" {
-    description = "SSH key name for accessing the EKS nodes"
-    type        = string
-}
-
-variable "subnet_id_a" {
-  description = "Subnet ID for the first subnet"
+variable "cluster_version" {
+  description = "eks require version"
   type        = string
 }
-variable "subnet_id_b" {
-  description = "Subnet ID for the second subnet"
+
+variable "subnet_ids" {
+  description = "Subnet ID for the instance"
+  type        = list(string)
+}
+
+variable "vpc_security_group_ids" {
+  description = "VPC Security Group ID for the instance"
+  type        = string
+}
+
+variable "cluster_name" {
+  type        = string
+  description = "description"
+}
+
+
+variable "instance_type" {
+  description = "The instance type for the EKS nodes"
   type        = string
 }

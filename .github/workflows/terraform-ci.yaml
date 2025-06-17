@@ -3,7 +3,7 @@ name: Terraform CI/CD
 on:
   push:
     branches:
-      - main
+      - 'feature/**'
     paths:
       - 'Infra/**'
       - '.github/workflows/terraform-ci.yml'
@@ -20,13 +20,18 @@ on:
           - destroy
 
 jobs:
-  terraform-plan:
+  terraform-validate:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: startsWith(github.ref, 'refs/heads/feature/')
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -43,16 +48,20 @@ jobs:
       - name: Terraform Plan
         run: |
           cd Infra
-          terraform plan -out=tfplan
+          terraform plan
 
-  terraform-apply:
+  terraform-apply-destroy:
     runs-on: ubuntu-latest
-    needs: terraform-plan
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'apply'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -66,32 +75,11 @@ jobs:
           cd Infra
           terraform init
 
-      - name: Terraform Apply
+      - name: Terraform Apply or Destroy
         run: |
           cd Infra
-          terraform apply -auto-approve
-
-  terraform-destroy:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v3
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Terraform Init
-        run: |
-          cd Infra
-          terraform init
-
-      - name: Terraform Destroy
-        run: |
-          cd Infra
-          terraform destroy -auto-approve
+          if [ "${{ github.event.inputs.action }}" == "apply" ]; then
+            terraform apply -auto-approve
+          else
+            terraform destroy -auto-approve
+          fi

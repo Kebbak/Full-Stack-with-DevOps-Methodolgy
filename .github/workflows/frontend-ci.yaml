@@ -1,35 +1,35 @@
-# name: Frontend CI/CD
+name: Frontend CI/CD
 
-# on:
-#   push:
-#     paths:
-#       - "frontend/**"
-#       - ".github/workflows/frontend-ci.yml"
+on:
+  push:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend-ci.yml"
 
-# jobs:
-#   frontend-build-push:
-#     runs-on: ubuntu-latest
+jobs:
+  frontend-build-push:
+    runs-on: ubuntu-latest
 
-#     env:
-#       IMAGE: ${{ secrets.ECR_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/netflix-frontend:latest
+    env:
+      IMAGE: ${{ secrets.ECR_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/netflix-frontend:latest
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-#       - name: Configure AWS credentials
-#         uses: aws-actions/configure-aws-credentials@v3
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws-region: ${{ secrets.AWS_REGION }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
-#       - name: Login to Amazon ECR
-#         id: login-ecr
-#         uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
-#       - name: Build Docker image
-#         run: docker build -t $IMAGE ./frontend
+      - name: Build Docker image
+        run: docker build -t $IMAGE ./frontend
 
-#       - name: Push image to ECR
-#         run: docker push $IMAGE
+      - name: Push image to ECR
+        run: docker push $IMAGE

@@ -3,7 +3,7 @@ data "aws_subnet" "subnet1" {
 }
 
 # create ec2 instance
-#testing purpose
+#testing purpose only
 resource "aws_instance" "example" {
   ami           = "ami-09e6f87a47903347c"
   instance_type = t2.micro

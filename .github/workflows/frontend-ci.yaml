@@ -12,9 +12,6 @@ jobs:
   frontend-build-push:
     runs-on: ubuntu-latest
 
-    env:
-      IMAGE: ${{ secrets.ECR_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/netflix-frontend:latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -29,6 +26,9 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set IMAGE tag
+        run: echo "IMAGE=${{ secrets.ECR_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/netflix-frontend:v1" >> $GITHUB_ENV
 
       - name: Build Docker image
         run: docker build -t $IMAGE ./frontend

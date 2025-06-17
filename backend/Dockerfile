@@ -12,6 +12,6 @@ COPY . .
 EXPOSE 5000
 # Start the application
 CMD ["node", "server.js"]
-# Use a non-root user to run the application
+# Use a non-root user to run the apps
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser

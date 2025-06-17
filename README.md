@@ -42,8 +42,6 @@ DevOps:
 	•	Prometheus + Grafana (Monitoring)
 	•	AWS Cloud (EKS, S3, etc.)
 
-⸻
-
 🚀 Key Features
 
 🔐 Authentication:
@@ -61,10 +59,12 @@ DevOps:
 	•	Upload and manage movies
 
 🧱 DevOps & Deployment:
+
 	•	Dockerized microservices (frontend/backend)
 	•	CI/CD pipeline using GitHub Actions and ArgoCD
         •       Terraform (Infrasture Provision)
 	•	Deployed to AWS EKS (Kubernetes)
+        •       Trivy & Checkov (Security Vulnerabilites)
 	•	Real-time monitoring with Prometheus and Grafana
 
 📷 Screenshots

@@ -1,3 +1,4 @@
+# This workflow builds and pushes the Docker image for the frontend application
 name: Frontend image
 
 on:

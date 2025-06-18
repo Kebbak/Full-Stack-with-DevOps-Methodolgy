@@ -1,3 +1,4 @@
+# This workflow applies Terraform configurations to AWS infrastructure. mnanually triggerS
 name: Terraform Apply
 
 on:

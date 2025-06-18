@@ -1,3 +1,4 @@
+# This workflow runs Terraform plan on every push to any branch except main.
 name: Terraform Plan
 
 on:

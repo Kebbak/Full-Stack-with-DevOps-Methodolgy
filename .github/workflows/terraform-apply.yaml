@@ -24,10 +24,12 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.6.0  # adjust as needed
+          terraform_version: 1.6.0
 
       - name: Terraform Init
+        working-directory: Infra
         run: terraform init
 
       - name: Terraform ${{ github.event.inputs.action }}
+        working-directory: Infra
         run: terraform ${{ github.event.inputs.action }} -auto-approve

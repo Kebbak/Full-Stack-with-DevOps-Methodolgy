@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'backend/**'
+      - 'backend/Dockerfile'
       - '.github/workflows/backend-ci.yml'
 
 jobs:

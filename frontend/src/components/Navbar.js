@@ -9,7 +9,7 @@ export default function Navbar() {
   const [profileName, setProfileName] = useState('');
   const [profileImage, setProfileImage] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(null);
-  const [notifications, setNotifications] = useState([]);
+  const [notifications,] = useState([]);
   const [newNotification, setNewNotification] = useState(false);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);

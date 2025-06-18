@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+//const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export default function MovieRow({ title, fetchUrl, mockData = null }) {
   const [movies, setMovies] = useState([]);

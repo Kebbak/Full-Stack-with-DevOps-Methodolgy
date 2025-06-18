@@ -1,4 +1,4 @@
-#scan docker images with Trivy scan
+#scan docker images with Trivy
 name: Trivy Image Scan
 
 on:

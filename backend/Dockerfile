@@ -1,17 +1,27 @@
-# Create Dockerfile for the backend service
+# Use a lightweight Node.js base image
 FROM node:18-alpine
-# Set the working directory
+
+# Create a non-root user and group early
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Set working directory and ensure permissions
 WORKDIR /app
-# Copy package.json and package-lock.json
 COPY package*.json ./
-# Install dependencies
-RUN npm install 
+
+# Install dependencies as root
+RUN npm install
+
 # Copy the rest of the application code
 COPY . .
-# Expose the port the app runs on
+
+# Change ownership of the app directory to the non-root user
+RUN chown -R appuser:appgroup /app
+
+# Switch to the non-root user
+USER appuser
+
+# Expose the port your app runs on
 EXPOSE 5000
+
 # Start the application
 CMD ["node", "server.js"]
-# Use a non-root user to run the application
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser

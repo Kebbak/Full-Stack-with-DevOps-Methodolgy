@@ -1,4 +1,3 @@
-# This workflow runs Terraform plan on every push to any branch except main.
 name: Terraform Plan
 
 on:
@@ -28,6 +27,13 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.6.0
+
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Run Checkov (non-blocking)
+        run: checkov -d Infra
+        continue-on-error: true
 
       - name: Terraform Init
         working-directory: Infra

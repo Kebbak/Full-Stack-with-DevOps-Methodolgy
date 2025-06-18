@@ -1,4 +1,4 @@
-# Create dockerfile for the frontend service
+# Create dockerfile for the frontend
 FROM node:18-alpine
 # Set the working directory
 WORKDIR /app

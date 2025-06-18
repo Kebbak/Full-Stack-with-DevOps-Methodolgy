@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: your-dockerhub-username/netflix-frontend:latest
+          image: 050752619291.dkr.ecr.us-east-1.amazonaws.com/netflix-frontend:v1
           ports:
             - containerPort: 3000
           env:

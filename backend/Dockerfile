@@ -1,4 +1,4 @@
-# Create Dockerfile for the backend service
+# Create Dockerfile for the backend
 FROM node:18-alpine
 # Set the working directory
 WORKDIR /app

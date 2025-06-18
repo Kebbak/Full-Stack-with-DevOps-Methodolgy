@@ -3,10 +3,10 @@ variable "node_group_name" {
   default = "default-eks-nodes name"
 }
 
-# variable "cluster_version" {
-#   description = "eks require version"
-#   type        = string
-# }
+variable "cluster_version" {
+  description = "eks require version"
+  type        = string
+}
 
 variable "subnet_ids" {
   description = "Subnet ID for the instance"
@@ -22,8 +22,8 @@ variable "instance_type" {
   description = "The instance type for the EKS nodes"
   type        = string
 }
-# variable "cluster_name" {
-#   description = "The name of the EKS cluster"
-#   type        = string
-# }
+variable "cluster_name" {
+  description = "The name of the EKS cluster"
+  type        = string
+}
 

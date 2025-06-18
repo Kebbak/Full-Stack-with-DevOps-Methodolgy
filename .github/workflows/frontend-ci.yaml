@@ -1,4 +1,4 @@
-name: Frontend CI/CD
+name: Frontend image
 
 on:
   push:

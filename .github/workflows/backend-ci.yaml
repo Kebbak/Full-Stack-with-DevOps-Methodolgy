@@ -1,5 +1,5 @@
 #create  a new file named backend-ci.yaml in the .github/workflows directory
-name: Backend CI/CD
+name: Backend image
 
 on:
   push:

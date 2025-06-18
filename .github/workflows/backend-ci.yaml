@@ -1,4 +1,4 @@
-#create  a new file named backend-ci.yaml in the .github/workflows directory
+#create  a new file named backend-ci.yaml in the .github/workflows
 name: Backend image
 
 on:

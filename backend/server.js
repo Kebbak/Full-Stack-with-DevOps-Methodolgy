@@ -16,8 +16,8 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
 
-// Add a simple root route for browser testing
-app.get('/', (req, res) => {
+// Add  route for browser testing
+app.get('/health', (req, res) => {
   res.send('API is running');
 });
 

@@ -20,7 +20,7 @@ jobs:
       - name: Set IMAGE name
         run: echo "IMAGE=${IMAGE}" >> $GITHUB_ENV
         env:
-          IMAGE: "${{ secrets.ECR_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/backend:${{ github.event.inputs.image_tag }}"
+          IMAGE: "${{ secrets.ECR_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/netflix-backend:${{ github.event.inputs.image_tag }}"
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3

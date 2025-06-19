@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       image_tag:
-        description: 'Docker image tag to scan
+        description: 'Docker image tag to scan'
         required: true
         default: 'v1'
 

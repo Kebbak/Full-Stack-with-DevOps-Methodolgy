@@ -18,11 +18,42 @@ resource "aws_eks_cluster" "aws_eks_cluster" {
   }
 }
 
-# Add addons
+# Add addons vpc cni
 resource "aws_eks_addon" "eks-add" {
   cluster_name = aws_eks_cluster.aws_eks_cluster.name
   addon_name   = "vpc-cni"
 
+  depends_on = [
+    aws_eks_cluster.aws_eks_cluster
+  ]
+}
+
+# Add addons core dns
+resource "aws_eks_addon" "eks-add-coredns" {
+  cluster_name = aws_eks_cluster.aws_eks_cluster.name
+  addon_name   = "coredns"
+
+  depends_on = [
+    aws_eks_cluster.aws_eks_cluster
+  ]
+}
+
+# Add addons kube proxy
+resource "aws_eks_addon" "eks-add-kube-proxy" {
+  cluster_name = aws_eks_cluster.aws_eks_cluster.name
+  addon_name   = "kube-proxy"
+
+  depends_on = [
+    aws_eks_cluster.aws_eks_cluster
+  ]
+}
+
+# Addon csi driver
+resource "aws_eks_addon" "eks-add-csi-driver" {
+  cluster_name = aws_eks_cluster.aws_eks_cluster.name
+  addon_name   = "aws-ebs-csi-driver" 
+  addon_version = "v1.21.0-eksbuild.1"
+  resolve_conflicts = "OVERWRITE"
   depends_on = [
     aws_eks_cluster.aws_eks_cluster
   ]

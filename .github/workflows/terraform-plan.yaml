@@ -36,7 +36,7 @@ jobs:
         continue-on-error: true
 
       - name: Terraform Init
-        working-directory: Infra
+        working-directory: Infra/Provisioning
         run: terraform init
 
       - name: Terraform Plan

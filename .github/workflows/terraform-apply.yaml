@@ -1,5 +1,5 @@
 # This workflow applies Terraform configurations to AWS infrastructure. mnanually triggerS
-name: Terraform Apply
+name: Terraform Apply (Manual)
 
 on:
   workflow_dispatch:

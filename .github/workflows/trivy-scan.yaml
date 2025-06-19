@@ -1,4 +1,4 @@
-# .github/workflows/trivy-image-scan
+# .github/workflows/trivy-image-scan.yaml
 name: Trivy Image Scan (Manual)
 
 on:

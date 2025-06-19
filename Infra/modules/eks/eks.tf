@@ -48,17 +48,6 @@ resource "aws_eks_addon" "eks-add-kube-proxy" {
   ]
 }
 
-# Addon csi driver
-resource "aws_eks_addon" "eks-add-csi-driver" {
-  cluster_name = aws_eks_cluster.aws_eks_cluster.name
-  addon_name   = "aws-ebs-csi-driver" 
-  addon_version = "v1.21.0-eksbuild.1"
-  resolve_conflicts = "OVERWRITE"
-  depends_on = [
-    aws_eks_cluster.aws_eks_cluster
-  ]
-}
-
 # EKS nodes
 resource "aws_eks_node_group" "my_eks_node" {
   cluster_name            = aws_eks_cluster.aws_eks_cluster.name

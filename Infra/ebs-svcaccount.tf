@@ -1,3 +1,4 @@
+
 # create service account ebs csi driver
 resource "kubernetes_service_account" "ebs_csi_driver_sa" {
   metadata {

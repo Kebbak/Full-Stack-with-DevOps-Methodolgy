@@ -1,11 +1,15 @@
+# define namespace for the application
+resource "kubernetes_namespace" "netflix_clone" {
+  metadata {
+    name = "netflix-clone"
+  }
+}
+
 # create service account for the application
 resource "kubernetes_service_account" "app_service_account" {
   metadata {
-    name      = "app-service-account"
-    namespace = "netflix-clone"
-    labels = {
-      app = "netflix-clone"
-    }
+    name      = "app-sa"
+    namespace = kubernetes_namespace.netflix_clone.metadata[0].name
   }
 }
 

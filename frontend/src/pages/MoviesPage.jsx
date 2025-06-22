@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import MovieCard from '../components/MovieCard';
-// Make sure the path is correct
 
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -20,7 +19,37 @@ export default function MoviesPage() {
     const fetchCategory = async (category) => {
       const res = await fetch(`${BASE_URL}/movie/${category}?api_key=${API_KEY}`);
       const data = await res.json();
-      return data.results;
+
+      const moviesWithRatings = await Promise.all(
+        data.results.map(async (movie) => {
+          try {
+            const certRes = await fetch(`${BASE_URL}/movie/${movie.id}/release_dates?api_key=${API_KEY}`);
+            const certData = await certRes.json();
+
+            const getCertification = (results) => {
+              const pl = results.find(r => r.iso_3166_1 === 'PL');
+              const us = results.find(r => r.iso_3166_1 === 'US');
+              return (
+                  pl?.release_dates?.find(r => r.certification)?.certification ||
+                  us?.release_dates?.find(r => r.certification)?.certification ||
+                  null
+              );  
+           };
+           const certification = getCertification(certData.results);
+           // for debugging purposes
+           console.log(`Movie: ${movie.title}, Certification: ${certification}`);
+
+
+
+            return { ...movie, certification };
+          } catch (err) {
+            console.error(`Error fetching certification for movie ${movie.id}`, err);
+            return { ...movie, certification: null };
+          }
+        })
+      );
+
+      return moviesWithRatings;
     };
 
     const fetchAll = async () => {
@@ -42,13 +71,14 @@ export default function MoviesPage() {
   };
 
   const renderRow = (title, items) => (
-    <div className="mb-10">
+    <div className="mb-10" key={title}>
       <h2 className="text-2xl font-semibold mb-3">{title}</h2>
       <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
         {items?.map((movie) => (
           <MovieCard
             key={movie.id}
             movie={movie}
+            certification={movie.certification}
             isInMyList={myList.some((m) => m.id === movie.id)}
             onToggleMyList={handleToggleMyList}
           />

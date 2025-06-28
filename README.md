@@ -4,53 +4,53 @@ enhanced with complete DevOps automation using Docker, GitHub Actions, ArgoCD, a
 
 
 
-# 📦 __How to Run Locally (Dev Mode)__
+###  How to Run Locally (Dev Mode)
 
 git clone https://github.com/Kebba91/Netflix-Replica-Full-Stack-Web-App-with-DevOps
-frontend: npm istall & npm start
-backend: npm install & node server. You might install few more depencies
+- frontend: npm istall & npm start
+- backend: npm install & node server. You might install few more depencies
 
 
-# 🛠 Tech Stack
-# Frontend
-React
-Tailwind CSS / Material UI
-Video.js (HLS player)
+###  Tech Stack
+### Frontend
+- React
+- Tailwind CSS / Material UI
+- Video.js (HLS player)
 
-# Backend
-Node.js
-Express
-MongoDB
-JWT Authentication
-TMDB API
+### Backend
+- Node.js
+- Express
+- MongoDB
+- JWT Authentication
+- TMDB API
 
 
-# DevOps & Cloud
-Docker (frontend & backend)
-GitHub Actions (CI)
-ArgoCD (CD with GitOps)
-Kubernetes (AWS EKS)
-Terraform (Infrastructure Provisioning)
-Trivy & Checkov (Security Scanning)
-Prometheus + Grafana (Monitoring)
-AWS Cloud (EKS, S3, etc.)
+### DevOps & Cloud
+- Docker (frontend & backend)
+- GitHub Actions (CI)
+- ArgoCD (CD with GitOps)
+- Kubernetes (AWS EKS)
+- Terraform (Infrastructure Provisioning)
+- Trivy & Checkov (Security Scanning)
+- Prometheus + Grafana (Monitoring)
+- AWS Cloud (EKS, S3, etc.)
 
-# 🚀 Key Features
-# 🔐 Authentication
-JWT-based login & registration
-Role-based access control (User / Admin)
+###  Key Features
+###  Authentication
+- JWT-based login & registration
+- Role-based access control (User / Admin)
 
-# 📺 Streaming
-HLS video streaming via Video.js
-Movie browsing by genre
-Detailed movie pages
-Watchlist support
+###  Streaming
+- HLS video streaming via Video.js
+- Movie browsing by genre
+- Detailed movie pages
+- Watchlist support
 
-# 🧑‍💻 Admin Panel
-Secure admin dashboard
-Upload and manage movies
+### Admin Panel
+- Secure admin dashboard
+- Upload and manage movies
 
-### 🧱  DevOps & Deployment
+###  DevOps & Deployment
 - Dockerized microservices (frontend/backend)
 - CI/CD pipeline with GitHub Actions & ArgoCD
 - Infrastructure as Code with Terraform

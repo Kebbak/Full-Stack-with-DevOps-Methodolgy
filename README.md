@@ -25,17 +25,6 @@ git clone https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevO
 - JWT Authentication
 - TMDB API
 
-
-### DevOps & Cloud
-- Docker (frontend & backend)
-- GitHub Actions (CI)
-- ArgoCD (CD with GitOps)
-- Kubernetes (AWS EKS)
-- Terraform (Infrastructure Provisioning)
-- Trivy & Checkov (Security Scanning)
-- Prometheus + Grafana (Monitoring)
-- AWS Cloud (EKS, S3, ECR, IAM.)
-
 ###  Key Features
 ###  Authentication
 - JWT-based login & registration
@@ -60,7 +49,6 @@ git clone https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevO
 - Deployed on AWS EKS (Kubernetes)
 
 ### Architecture Diagram
-
 <img width="481" alt="image" src="https://github.com/user-attachments/assets/f44beb4f-25db-4a9e-b1bf-c0d8ecb8b1f8" />
 
 

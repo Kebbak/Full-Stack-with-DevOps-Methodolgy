@@ -1,74 +1,64 @@
 
-A fully Functional Netflix-Inspired Netflix Replica video streaming platform built using MERN Stack(MongoDB, Express, React,Nodejs)
-with complete DevOps automation using Docker, Trivy-scan,  Github Acyions CI/CD pipeline, ArgoCD and AWS EKS.
+A fully functional, Netflix-inspired video streaming platform built using the MERN Stack (MongoDB, Express, React, Node.js),
+enhanced with complete DevOps automation using Docker, GitHub Actions, ArgoCD, and AWS EKS.
 
 
 
-📦 __How to Run Locally (Dev Mode)__
+# 📦 __How to Run Locally (Dev Mode)__
 
 git clone https://github.com/Kebba91/Netflix-Replica-Full-Stack-Web-App-with-DevOps
+# frontend: npm istall & npm start
+# backend: npm install & node server. You might install few more depencies
 
-__Start Backend__
 
-cd backend
-npm install 
-node server.js
+# 🛠 Tech Stack
+# Frontend
+React
+Tailwind CSS / Material UI
+Video.js (HLS player)
 
-__Start Frontend__
-cd frontend
-npm install
-npm start
+# Backend
+Node.js
+Express
+MongoDB
+JWT Authentication
+TMDB API
 
-🛠 Tech Stack
 
-Frontend:
-	•	React
-	•	Tailwind CSS / Material UI
-	•	Video.js (HLS player)
+# DevOps & Cloud
+Docker (frontend & backend)
+GitHub Actions (CI)
+ArgoCD (CD with GitOps)
+Kubernetes (AWS EKS)
+Terraform (Infrastructure Provisioning)
+Trivy & Checkov (Security Scanning)
+Prometheus + Grafana (Monitoring)
+AWS Cloud (EKS, S3, etc.)
 
-Backend:
-	•	Node.js
-	•	Express
-	•	MongoDB
-	•	JWT Authentication
-	•	Stripe / PayPal (mocked)
-	•	TMDB API
+# 🚀 Key Features
+# 🔐 Authentication
+JWT-based login & registration
+Role-based access control (User / Admin)
 
-DevOps:
-	•	Docker (frontend & backend)
-	•	GitHub Actions (CI)
-	•	ArgoCD (CD with GitOps)
-	•	Kubernetes (AWS EKS)
-	•	Prometheus + Grafana (Monitoring)
-	•	AWS Cloud (EKS, S3, etc.)
+# 📺 Streaming
+HLS video streaming via Video.js
+Movie browsing by genre
+Detailed movie pages
+Watchlist support
 
-🚀 Key Features
+# 🧑‍💻 Admin Panel
+Secure admin dashboard
+Upload and manage movies
 
-🔐 Authentication:
-	•	JWT-based login & registration
-	•	Role-based access control (User / Admin)
+# 🧱  DevOps & Deployment
+Dockerized microservices (frontend/backend)
+CI/CD pipeline with GitHub Actions & ArgoCD
+Infrastructure as Code with Terraform
+Security scanning using Trivy & Checkov
+Real-time monitoring with Prometheus & Grafana
+Deployed on AWS EKS (Kubernetes)
 
-📺 Streaming:
-	•	HLS video streaming via Video.js
-	•	Movie browsing by genre
-	•	Detailed movie pages
-	•	Watchlist support
 
-🧑‍💻 Admin Features:
-	•	Secure admin panel
-	•	Upload and manage movies
-
-🧱 DevOps & Deployment:
-	•	Dockerized microservices (frontend/backend)
-	•	CI/CD pipeline using GitHub Actions and ArgoCD
-        •       Terraform (Infrasture Provision)
-	•	Deployed to AWS EKS (Kubernetes)
-        •       Trivy & Checkov (Security Vulnerabilites)
-	•	Real-time monitoring with Prometheus and Grafana
-
-__Architectural diagram__
-
-<img width="471" alt="image" src="https://github.com/user-attachments/assets/9f7f4262-92d4-4b3c-a47d-676cbeeb799e" />
 
 
 

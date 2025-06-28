@@ -6,7 +6,7 @@ enhanced with complete DevOps automation using Docker, GitHub Actions, ArgoCD, a
 
 ###  How to Run Locally (Dev Mode)
 
-git clone https://github.com/Kebba91/Netflix-Replica-Full-Stack-Web-App-with-DevOps
+git clone https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevOps
 - frontend: npm istall & npm start
 - backend: npm install & node server. You might need to install few more dependencies
 

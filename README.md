@@ -61,6 +61,7 @@ git clone https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevO
 
 ### Architecture Diagram
 
+<img width="481" alt="image" src="https://github.com/user-attachments/assets/f44beb4f-25db-4a9e-b1bf-c0d8ecb8b1f8" />
 
 
 

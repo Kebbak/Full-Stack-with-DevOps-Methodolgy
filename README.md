@@ -41,7 +41,7 @@ git clone https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevO
 - Upload and manage movies
 
 ###  DevOps & Cloud Deployment
-- Dockerized microservices (frontend/backend)
+- Dockerized (frontend/backend/database)
 - CI/CD pipeline with GitHub Actions & ArgoCD
 - Infrastructure as Code with Terraform
 - Security scanning using Trivy & Checkov

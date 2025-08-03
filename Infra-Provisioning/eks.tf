@@ -1,4 +1,5 @@
 # build and push the backend Docker image to Amazon ECR
+# This file is part of the Infra-Provisioning module for EKS cluster setup.
 
 module "eks_cluster" {
   source                 = "./modules/eks"

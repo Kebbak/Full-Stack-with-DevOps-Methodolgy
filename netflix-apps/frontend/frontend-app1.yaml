@@ -1,0 +1,3 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+# ...existing code from frontend-app1.yaml...

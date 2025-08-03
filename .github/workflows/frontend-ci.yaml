@@ -1,4 +1,5 @@
 # This workflow builds and pushes the Docker image for the frontend application
+# build and push the frontend Docker image to Amazon ECR
 name: Frontend image
 
 on:

@@ -10,8 +10,11 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/Kebba91/Netflix-Replica-Full-Stack-Web-App-with-DevOps'
-    path: K8s-Manifests/infra
+    path: K8s-Manifests/shared-infra
     targetRevision: main
+    helm:
+      valueFiles:
+        - monitoring-values.yaml
   syncPolicy:
     automated:
       prune: true

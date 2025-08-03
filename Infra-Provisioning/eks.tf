@@ -1,3 +1,5 @@
+# build and push the backend Docker image to Amazon ECR
+
 module "eks_cluster" {
   source                 = "./modules/eks"
   cluster_name           = var.cluster_name

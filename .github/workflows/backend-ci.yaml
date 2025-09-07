@@ -1,5 +1,5 @@
 #create  a new file named backend-ci.yaml in the .github/workflows
-# build and push the backend Docker image to Amazon ECR
+## build and push the backend Docker image to Amazon ECR
 name: Backend image
 
 on:

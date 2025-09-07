@@ -35,3 +35,10 @@ data:
           - action: replace
             replacement: /var/log/pods/*/*/*.log
             target_label: __path__
+      - job_name: kubernetes-containers
+        static_configs:
+          - targets:
+              - localhost
+            labels:
+              job: kubernetes-containers
+              __path__: /var/log/containers/*.log

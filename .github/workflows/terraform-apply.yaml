@@ -35,6 +35,7 @@ jobs:
           terraform_version: 1.6.0  # update if needed
 
       - name: Terraform Init
+        if: ${{ github.event.inputs.action == 'apply' }}
         working-directory: Infra-Provisioning
         run: terraform init
 

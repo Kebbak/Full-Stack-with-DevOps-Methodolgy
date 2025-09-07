@@ -39,14 +39,14 @@ resource "aws_eks_addon" "eks-add-kube-proxy" {
 }
 
 # Add addons core dns
-resource "aws_eks_addon" "eks-add-core-dns" {
-  cluster_name = aws_eks_cluster.aws_eks_cluster.name
-  addon_name   = "coredns"  
-  #resolve_conflicts = "PRESERVE"
-  depends_on = [
-    aws_eks_cluster.aws_eks_cluster
-  ]
-}
+# resource "aws_eks_addon" "eks-add-core-dns" {
+#   cluster_name = aws_eks_cluster.aws_eks_cluster.name
+#   addon_name   = "coredns"  
+#   #resolve_conflicts = "PRESERVE"
+#   depends_on = [
+#     aws_eks_cluster.aws_eks_cluster
+#   ]
+# }
 
 # EKS nodes
 resource "aws_eks_node_group" "my_eks_node" {

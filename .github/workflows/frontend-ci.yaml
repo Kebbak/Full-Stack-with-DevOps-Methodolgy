@@ -7,8 +7,8 @@ on:
     branches:
       - main
     paths:
-      - 'frontend/Dockerfile'
-      - '.github/workflows/frontend-ci.yml'
+      - 'frontend/**'
+      - '.github/workflows/frontend-ci.yaml'
 
 jobs:
   frontend-build-push:

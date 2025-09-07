@@ -1,4 +1,4 @@
-# Create terraform eks cluster
+# Create terraform eks cluster for netflix replica app
 resource "aws_eks_cluster" "aws_eks_cluster" {
   name               = var.cluster_name
   version            = var.cluster_version

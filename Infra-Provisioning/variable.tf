@@ -27,3 +27,8 @@ variable "cluster_name" {
   type        = string
 }
 
+variable "key_name" {
+  description = "Name of the SSH key"
+  type        = string
+}
+

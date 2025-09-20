@@ -1,5 +1,5 @@
 # Terraform modules to create EKS cluster and node group
-# This file is part of the Infra-Provisioning module for EKS cluster setup.
+# Source: ./modules/eks
 
 module "eks_cluster" {
   source                 = "./modules/eks"

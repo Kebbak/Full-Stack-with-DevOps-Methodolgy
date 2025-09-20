@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: falco-helm
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://falcosecurity.github.io/charts
+    chart: falco
+    targetRevision: 3.8.0
+    helm:
+      releaseName: falco
+      values: |
+        falco:
+          jsonOutput: true
+          logLevel: info
+          httpOutput:
+            enabled: true
+            url: "http://localhost:3100/loki/api/v1/push"
+            headers:
+              X-Scope-OrgID: "default"
+        tty: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: falco
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

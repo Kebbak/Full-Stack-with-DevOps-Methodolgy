@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: 'git@github.com:Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevOps.git'
     targetRevision: main
-    path: netflix-apps
+    path: child-apps
     directory:
       recurse: true
   destination:

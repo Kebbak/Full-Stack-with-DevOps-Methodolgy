@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'git@github.com:Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevOps.git'
+    repoURL: 'https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevOps.git'
     targetRevision: main
     path: K8s-Manifests/monitoring
   destination:

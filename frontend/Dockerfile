@@ -1,5 +1,5 @@
 # Build docker image for the frontend service
-# This Dockerfile sets up a Node.js environment for the frontend service
+# Dockerfile sets up a Node.js environment for the frontend service
 FROM node:18-alpine
 WORKDIR /app
 COPY package*.json ./

@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: falco
+spec:
+  template:
+    spec:
+      containers:
+        - name: falco
+          image: falcosecurity/falco:latest
+          env:
+            - name: CUSTOM_ENV
+              value: "patched-falco"

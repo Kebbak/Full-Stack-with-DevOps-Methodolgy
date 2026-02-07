@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+# spec:
+#   template:
+#     spec:
+#       containers:
+#         - name: frontend
+#           image: kebbak/netflix-frontend:latest
+#           env:
+#             - name: CUSTOM_ENV
+#               value: "patched-frontend"

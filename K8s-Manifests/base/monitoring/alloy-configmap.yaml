@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alloy-config
+  namespace: monitoring
+data:
+  alloy.config.hcl: |
+    // Alloy configuration to collect logs and send to Loki
+    discovery.kubernetes "pods" {}
+
+    receiver "filelog" {
+      target = "/var/log/containers/*.log"
+      include = ["*.log"]
+      exclude = []
+      start_at = "beginning"
+      encoding = "utf-8"
+      multiline {
+        line_start_pattern = "^"
+      }
+    }
+
+    exporter "loki" {
+      endpoint = "http://loki.monitoring.svc.cluster.local:3100/api/prom/push"
+      labels = {
+        job = "alloy"
+      }
+    }

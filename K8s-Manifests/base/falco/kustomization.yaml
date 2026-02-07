@@ -1,0 +1,5 @@
+resources:
+  - ../../falco/falco-helm-charts.yaml
+patches:
+  - patch.yaml
+  - ../shared-infra/patch.yaml

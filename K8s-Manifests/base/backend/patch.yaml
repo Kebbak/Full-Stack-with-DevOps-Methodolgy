@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+# spec:
+#   template:
+#     spec:
+#       containers:
+#         - name: backend
+#           image: kebbak/netflix-backend:latest
+#           env:
+#             - name: CUSTOM_ENV
+#               value: "patched-backend"

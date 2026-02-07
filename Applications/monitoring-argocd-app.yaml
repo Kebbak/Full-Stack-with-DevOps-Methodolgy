@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: argocd
+spec:
+  project: netflix-app-project
+  source:
+    repoURL: 'https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevOps.git'
+    targetRevision: main
+    path: K8s-Manifests/monitoring
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

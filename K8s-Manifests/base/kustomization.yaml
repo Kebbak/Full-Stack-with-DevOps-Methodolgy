@@ -1,0 +1,6 @@
+resources:
+  - backend/
+  - frontend/
+  - mongodb/
+  - monitoring/
+  - falco/

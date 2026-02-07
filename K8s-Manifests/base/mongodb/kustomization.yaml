@@ -1,0 +1,7 @@
+resources:
+  - ../../mongodb/mongodb-deployment.yaml
+  - ../../mongodb/mongodb-service.yaml
+  - ../../mongodb/mongodb-pvc.yaml
+patches:
+  - patch.yaml
+  - ../shared-infra/patch.yaml

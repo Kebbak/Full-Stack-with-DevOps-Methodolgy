@@ -1,0 +1,10 @@
+resources:
+  - ../../monitoring/prometheus.yaml
+  - ../../monitoring/grafana.yaml
+  - ../../monitoring/loki.yaml
+  - ../../monitoring/alloy.yaml
+  - ../../monitoring/datasource-grafana-configmap.yaml
+  - ../../monitoring/grafana-dashboard-cpu-memory.yaml
+patches:
+  - patch.yaml
+  - ../shared-infra/patch.yaml

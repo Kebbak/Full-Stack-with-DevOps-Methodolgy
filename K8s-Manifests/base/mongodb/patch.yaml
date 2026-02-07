@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+# spec:
+#   template:
+#     spec:
+#       containers:
+#         - name: mongodb
+#           image: mongo:latest
+#           env:
+#             - name: CUSTOM_ENV
+#               value: "patched-mongodb"

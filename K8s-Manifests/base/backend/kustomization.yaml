@@ -1,0 +1,8 @@
+resources:
+  - ../../backend/backend-deployment.yaml
+  - ../../backend/backend-service.yaml
+  - ../../backend/backend-pv.yaml
+  - ../../backend/backend-pvc.yaml
+patches:
+  - patch.yaml
+  - ../shared-infra/patch.yaml

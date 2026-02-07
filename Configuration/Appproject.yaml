@@ -1,0 +1,28 @@
+# Approject file for ArgoCD
+
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: netflix-app-project
+  namespace: argocd
+spec:
+  description: Project for Netflix Replica Full Stack Web App with DevOps
+  sourceRepos:
+    - 'https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevOps.git'
+  destinations:
+    - server: 'https://kubernetes.default.svc'
+      namespace: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*' 
+  namespaceResourceBlacklist:
+    - group: ''
+      kind: 'Event' 
+  orphanedResources:
+    warn: true
+    ignore:
+      - group: '*'
+        kind: 'Secret'
+      - group: '*'
+        kind: 'ConfigMap'
+    

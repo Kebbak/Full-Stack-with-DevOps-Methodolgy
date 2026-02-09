@@ -1,4 +1,4 @@
-# Terraform modules to create EKS cluster and node group
+# Terraform modules to create EKS cluster
 # Source: ./modules/eks
 
 module "eks_cluster" {

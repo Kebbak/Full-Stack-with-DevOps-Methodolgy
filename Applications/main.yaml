@@ -5,7 +5,7 @@ metadata:
   name: netflix-app-of-apps
   namespace: argocd
 spec:
-  project: default
+  project: netflix-app-project
   source:
     repoURL: 'https://github.com/Kebbak/Netflix-Replica-Full-Stack-Web-App-with-DevOps.git'
     targetRevision: main

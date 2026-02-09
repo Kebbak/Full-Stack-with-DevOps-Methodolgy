@@ -4,3 +4,6 @@ resources:
   - mongodb/
   - monitoring/
   - falco/
+
+patches:
+  - shared-infra/patch.yaml

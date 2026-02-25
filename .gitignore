@@ -6,6 +6,6 @@ crash.log
 .terraform/
 .terraform.lock.hcl
 
-
+# Ignore environment variable files
 backend/.env
 frontend/.env
